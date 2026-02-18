@@ -15,6 +15,7 @@ final class AuthService: ObservableObject {
 
     private let supabase = SupabaseService.shared.client
     private var currentNonce: String?
+    private let debugBypassUserID = UUID(uuidString: "00000000-0000-0000-0000-000000000001")!
 
     private init() {
         Task { await checkSession() }
@@ -22,6 +23,11 @@ final class AuthService: ObservableObject {
 
     // MARK: - Session Check
     func checkSession() async {
+        if AppEnvironment.bypassAppleSignIn {
+            applyDebugBypassSession()
+            return
+        }
+
         do {
             let session = try await supabase.auth.session
             isAuthenticated = true
@@ -30,6 +36,11 @@ final class AuthService: ObservableObject {
             isAuthenticated = false
             currentUser = nil
         }
+    }
+
+    func signInForTesting() {
+        guard AppEnvironment.isTesting else { return }
+        applyDebugBypassSession()
     }
 
     // MARK: - Apple Sign In
@@ -122,6 +133,14 @@ final class AuthService: ObservableObject {
 
     // MARK: - Sign Out
     func signOut() async {
+        if AppEnvironment.bypassAppleSignIn {
+            isAuthenticated = false
+            currentUser = nil
+            onboardingComplete = false
+            errorMessage = nil
+            return
+        }
+
         do {
             try await supabase.auth.signOut()
             isAuthenticated = false
@@ -135,5 +154,20 @@ final class AuthService: ObservableObject {
     var onboardingComplete: Bool {
         get { UserDefaults.standard.bool(forKey: Constants.Keys.onboardingComplete) }
         set { UserDefaults.standard.set(newValue, forKey: Constants.Keys.onboardingComplete) }
+    }
+
+    private func applyDebugBypassSession() {
+        guard AppEnvironment.isTesting else { return }
+
+        currentUser = UserProfile(
+            id: debugBypassUserID,
+            appleUserId: "simulator-debug-user",
+            email: "simulator@healthinsightpro.local",
+            fullName: "Simulator Test User"
+        )
+        isAuthenticated = true
+        onboardingComplete = true
+        errorMessage = nil
+        isLoading = false
     }
 }

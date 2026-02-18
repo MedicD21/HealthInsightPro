@@ -9,6 +9,19 @@ struct HealthInsightProApp: App {
             AppRootView()
                 .environmentObject(authService)
                 .preferredColorScheme(.dark)
+                .overlay(alignment: .topTrailing) {
+                    if AppEnvironment.isTesting {
+                        Text(AppEnvironment.modeLabel)
+                            .font(.caption2.weight(.bold))
+                            .padding(.horizontal, 8)
+                            .padding(.vertical, 4)
+                            .background(Color.orange.opacity(0.9))
+                            .foregroundColor(.black)
+                            .clipShape(Capsule())
+                            .padding(.top, 10)
+                            .padding(.trailing, 10)
+                    }
+                }
         }
     }
 }

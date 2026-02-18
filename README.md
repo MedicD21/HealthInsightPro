@@ -32,12 +32,21 @@ A comprehensive iOS health tracking app inspired by Bright OS, built with SwiftU
 3. Enable **Apple** as an Auth provider (Dashboard → Authentication → Providers)
 4. Copy your **Project URL** and **anon key**
 
-### 2. Configure the app
-Open `HealthInsightPro/Utilities/Constants.swift` and replace:
-```swift
-static let url     = "YOUR_SUPABASE_URL"        // e.g. https://xxxx.supabase.co
-static let anonKey = "YOUR_SUPABASE_ANON_KEY"   // your project anon key
-```
+### 2. Configure environments
+The app now supports separate runtime modes:
+- `production` (release behavior)
+- `testing` (debug behavior, optional Apple Sign-In bypass on simulator)
+
+Set these in **Edit Scheme → Run → Arguments → Environment Variables**:
+
+| Variable | Example | Purpose |
+|---|---|---|
+| `HIP_APP_MODE` | `testing` or `production` | Chooses runtime mode (Debug defaults to `testing`) |
+| `HIP_SUPABASE_URL` | `https://your-test-project.supabase.co` | Overrides Supabase URL in testing mode |
+| `HIP_SUPABASE_ANON_KEY` | `your-test-anon-key` | Overrides Supabase anon key in testing mode |
+| `HIP_BYPASS_APPLE_SIGN_IN` | `1` or `0` | In testing mode, bypasses Apple Sign In (simulator default is `1`) |
+
+Production builds ignore these testing behaviors and run normal Apple Sign-In flow.
 
 ### 3. Xcode Setup
 1. Open `HealthInsightPro.xcodeproj` in Xcode 15+

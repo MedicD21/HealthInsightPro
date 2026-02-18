@@ -94,6 +94,22 @@ struct SignInView: View {
                     .cornerRadius(16)
                     .shadow(color: .white.opacity(0.1), radius: 8)
 
+                    if AppEnvironment.isTesting {
+                        Button(action: { authService.signInForTesting() }) {
+                            Text("Continue in Test Mode")
+                                .font(AppFont.headline())
+                                .foregroundColor(AppTheme.textPrimary)
+                                .frame(maxWidth: .infinity)
+                                .padding(.vertical, 14)
+                                .background(AppTheme.cardBackground)
+                                .overlay(
+                                    RoundedRectangle(cornerRadius: 12)
+                                        .stroke(AppTheme.borderSubtle, lineWidth: 1)
+                                )
+                                .cornerRadius(12)
+                        }
+                    }
+
                     if authService.isLoading {
                         ProgressView()
                             .tint(.white)

@@ -1,12 +1,95 @@
 import Foundation
 
+// MARK: - Runtime Environment
+enum AppEnvironment {
+    enum Mode: String {
+        case production
+        case testing
+    }
+
+    private static func value(for key: String) -> String? {
+        let envValue = ProcessInfo.processInfo.environment[key]?.trimmingCharacters(in: .whitespacesAndNewlines)
+        if let envValue, !envValue.isEmpty {
+            return envValue
+        }
+
+        let plistValue = Bundle.main.object(forInfoDictionaryKey: key) as? String
+        if let plistValue = plistValue?.trimmingCharacters(in: .whitespacesAndNewlines), !plistValue.isEmpty {
+            return plistValue
+        }
+
+        return nil
+    }
+
+    private static func boolValue(for key: String, defaultValue: Bool) -> Bool {
+        guard let raw = value(for: key)?.lowercased() else { return defaultValue }
+        switch raw {
+        case "1", "true", "yes", "y", "on":
+            return true
+        case "0", "false", "no", "n", "off":
+            return false
+        default:
+            return defaultValue
+        }
+    }
+
+    static var mode: Mode {
+        #if DEBUG
+        let configuredMode = value(for: "HIP_APP_MODE")?.lowercased()
+        if configuredMode == Mode.production.rawValue {
+            return .production
+        }
+        return .testing
+        #else
+        return .production
+        #endif
+    }
+
+    static var isTesting: Bool { mode == .testing }
+
+    static var modeLabel: String {
+        isTesting ? "TEST MODE" : "PRODUCTION"
+    }
+
+    static var supabaseURLOverride: String? {
+        guard isTesting else { return nil }
+        return value(for: "HIP_SUPABASE_URL")
+    }
+
+    static var supabaseAnonKeyOverride: String? {
+        guard isTesting else { return nil }
+        return value(for: "HIP_SUPABASE_ANON_KEY")
+    }
+
+    static var bypassAppleSignIn: Bool {
+        #if DEBUG
+        guard isTesting else { return false }
+        #if targetEnvironment(simulator)
+        return boolValue(for: "HIP_BYPASS_APPLE_SIGN_IN", defaultValue: true)
+        #else
+        return boolValue(for: "HIP_BYPASS_APPLE_SIGN_IN", defaultValue: false)
+        #endif
+        #else
+        return false
+        #endif
+    }
+}
+
 // MARK: - App Constants
 enum Constants {
 
     // MARK: Supabase
     enum Supabase {
-        static let url    = "https://syrevcrnmcgxgevylhmy.supabase.co"
-        static let anonKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InN5cmV2Y3JubWNneGdldnlsaG15Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzE0MjkwMDgsImV4cCI6MjA4NzAwNTAwOH0.FohsG8HpBS1-1IuBEb40KSh8afXauWI-defQ26-H8jU"
+        private static let productionURL = "https://syrevcrnmcgxgevylhmy.supabase.co"
+        private static let productionAnonKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InN5cmV2Y3JubWNneGdldnlsaG15Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzE0MjkwMDgsImV4cCI6MjA4NzAwNTAwOH0.FohsG8HpBS1-1IuBEb40KSh8afXauWI-defQ26-H8jU"
+
+        static var url: String {
+            AppEnvironment.supabaseURLOverride ?? productionURL
+        }
+
+        static var anonKey: String {
+            AppEnvironment.supabaseAnonKeyOverride ?? productionAnonKey
+        }
     }
 
     // MARK: App Info

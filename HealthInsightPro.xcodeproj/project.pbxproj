@@ -41,6 +41,7 @@
 		B066 /* InsightsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A066 /* InsightsView.swift */; };
 		B067 /* JournalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A067 /* JournalView.swift */; };
 		B068 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A068 /* ProfileView.swift */; };
+		B070 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A070 /* Assets.xcassets */; };
 		CB5DD9C02F46213900B7912A /* Supabase in Frameworks */ = {isa = PBXBuildFile; productRef = SUPAPKGDEP /* Supabase */; };
 /* End PBXBuildFile section */
 
@@ -79,6 +80,7 @@
 		A066 /* InsightsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsightsView.swift; sourceTree = "<group>"; };
 		A067 /* JournalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalView.swift; sourceTree = "<group>"; };
 		A068 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		A070 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		APLIST /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		APRODUCT /* HealthInsightPro.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HealthInsightPro.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -103,16 +105,17 @@
 			path = Activity;
 			sourceTree = "<group>";
 		};
-		APPGROUP /* HealthInsightPro */ = {
-			isa = PBXGroup;
-			children = (
-				A001 /* HealthInsightProApp.swift */,
-				APLIST /* Info.plist */,
-				UTILGROUP /* Utilities */,
-				MODELGROUP /* Models */,
-				SVCGROUP /* Services */,
-				VMGROUP /* ViewModels */,
-				VIEWGROUP /* Views */,
+			APPGROUP /* HealthInsightPro */ = {
+				isa = PBXGroup;
+				children = (
+					A001 /* HealthInsightProApp.swift */,
+					APLIST /* Info.plist */,
+					A070 /* Assets.xcassets */,
+					UTILGROUP /* Utilities */,
+					MODELGROUP /* Models */,
+					SVCGROUP /* Services */,
+					VMGROUP /* ViewModels */,
+					VIEWGROUP /* Views */,
 			);
 			path = HealthInsightPro;
 			sourceTree = "<group>";
@@ -353,6 +356,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B070 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
