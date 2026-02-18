@@ -365,7 +365,9 @@ struct FoodSearchView: View {
                             .foregroundColor(AppTheme.textPrimary)
                             .tint(AppTheme.accentGreen)
                             .autocorrectionDisabled()
-                            .onChange(of: localQuery) { vm.searchFood(query: $0) }
+                            .onChange(of: localQuery) { _, newQuery in
+                                vm.searchFood(query: newQuery)
+                            }
                         if vm.isSearching {
                             ProgressView().scaleEffect(0.75).tint(AppTheme.accentGreen)
                         } else if !localQuery.isEmpty {

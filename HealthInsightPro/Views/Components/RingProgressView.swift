@@ -44,7 +44,7 @@ struct RingProgressView: View {
                 animatedProgress = progress
             }
         }
-        .onChange(of: progress) { newValue in
+        .onChange(of: progress) { _, newValue in
             withAnimation(.easeOut(duration: Constants.Animation.standard)) {
                 animatedProgress = newValue
             }
@@ -154,6 +154,8 @@ struct LinearProgressBar: View {
         .onAppear {
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) { animated = progress }
         }
-        .onChange(of: progress) { animated = $0 }
+        .onChange(of: progress) { _, newValue in
+            animated = newValue
+        }
     }
 }

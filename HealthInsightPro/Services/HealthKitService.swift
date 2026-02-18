@@ -43,7 +43,7 @@ final class HealthKitService: ObservableObject {
             if let t = HKQuantityType.quantityType(forIdentifier: id) { types.insert(t) }
         }
         if let sleep = HKObjectType.categoryType(forIdentifier: .sleepAnalysis) { types.insert(sleep) }
-        if let workout = HKObjectType.workoutType() as? HKObjectType { types.insert(workout) }
+        types.insert(HKObjectType.workoutType())
         if let mindful = HKObjectType.categoryType(forIdentifier: .mindfulSession) { types.insert(mindful) }
         return types
     }()
@@ -62,7 +62,7 @@ final class HealthKitService: ObservableObject {
         for id in quantityTypes {
             if let t = HKQuantityType.quantityType(forIdentifier: id) { types.insert(t) }
         }
-        if let workout = HKObjectType.workoutType() as? HKSampleType { types.insert(workout) }
+        types.insert(HKObjectType.workoutType())
         return types
     }()
 
@@ -294,7 +294,7 @@ final class HealthKitService: ObservableObject {
         }
     }
 
-    private static func mapWorkoutType(_ type: HKWorkoutActivityType) -> ActivityType {
+    nonisolated private static func mapWorkoutType(_ type: HKWorkoutActivityType) -> ActivityType {
         switch type {
         case .running:          return .running
         case .walking:          return .walking

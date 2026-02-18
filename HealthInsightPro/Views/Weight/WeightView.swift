@@ -30,9 +30,9 @@ struct WeightView: View {
                     Spacer()
                     HStack {
                         Spacer()
-                        FloatingAddButton(gradient: AppTheme.gradientPrimary) {
+                        FloatingAddButton(action: {
                             vm.showLogWeight = true
-                        }
+                        }, gradient: AppTheme.gradientPrimary)
                         .padding(.trailing, 24).padding(.bottom, 90)
                     }
                 }

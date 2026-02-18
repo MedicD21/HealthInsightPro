@@ -31,9 +31,9 @@ struct ActivityView: View {
                     Spacer()
                     HStack {
                         Spacer()
-                        FloatingAddButton(gradient: AppTheme.gradientBlue) {
+                        FloatingAddButton(action: {
                             vm.showLogWorkout = true
-                        }
+                        }, gradient: AppTheme.gradientBlue)
                         .padding(.trailing, 24)
                         .padding(.bottom, 90)
                     }
