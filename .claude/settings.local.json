@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "*",
+      "WebFetch(domain:www.thebrightapp.xyz)",
+      "WebFetch(domain:huntscreens.com)",
+      "WebFetch(domain:apps.apple.com)",
+      "WebFetch(domain:aichief.com)",
+      "WebFetch(domain:www.producthunt.com)",
+      "WebFetch(domain:aipure.ai)",
+      "Bash(dir:*)"
+    ],
+    "deny": []
+  }
+}
