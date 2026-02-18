@@ -119,12 +119,64 @@ extension Date {
 
 // MARK: - Progress clamp
 extension CGFloat {
-    var clamped01: CGFloat { min(1, max(0, self)) }
+    var clamped01: CGFloat { Swift.min(1, Swift.max(0, self)) }
 }
 extension Double {
     var clamped01: Double { min(1.0, max(0.0, self)) }
     func clamped(min minVal: Double, max maxVal: Double) -> Double {
         Swift.min(maxVal, Swift.max(minVal, self))
+    }
+}
+
+// MARK: - Imperial conversion helpers
+enum ImperialUnits {
+    private static let lbsPerKg = 2.2046226218
+    private static let cmPerInch = 2.54
+    private static let mlPerFluidOunce = 29.5735295625
+    private static let milesPerKm = 0.6213711922
+    private static let feetPerKm = 3280.839895
+
+    static func kgToLbs(_ kg: Double) -> Double {
+        kg * lbsPerKg
+    }
+
+    static func lbsToKg(_ lbs: Double) -> Double {
+        lbs / lbsPerKg
+    }
+
+    static func cmToInches(_ cm: Double) -> Double {
+        cm / cmPerInch
+    }
+
+    static func inchesToCm(_ inches: Double) -> Double {
+        inches * cmPerInch
+    }
+
+    static func cmToFeetAndInchesString(_ cm: Double) -> String {
+        feetAndInchesString(fromInches: cmToInches(cm))
+    }
+
+    static func feetAndInchesString(fromInches inches: Double) -> String {
+        let roundedInches = max(0, Int(round(inches)))
+        let feet = roundedInches / 12
+        let remainderInches = roundedInches % 12
+        return "\(feet)'\(remainderInches)\""
+    }
+
+    static func kmToMiles(_ km: Double) -> Double {
+        km * milesPerKm
+    }
+
+    static func kmToFeet(_ km: Double) -> Double {
+        km * feetPerKm
+    }
+
+    static func mlToFluidOunces(_ ml: Double) -> Double {
+        ml / mlPerFluidOunce
+    }
+
+    static func fluidOuncesToMl(_ fluidOunces: Double) -> Double {
+        fluidOunces * mlPerFluidOunce
     }
 }
 

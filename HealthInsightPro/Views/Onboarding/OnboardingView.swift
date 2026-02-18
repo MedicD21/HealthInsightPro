@@ -10,9 +10,9 @@ struct OnboardingView: View {
     @State private var goals: Set<HealthGoal> = [.generalHealth]
     @State private var biologicalSex: BiologicalSex = .other
     @State private var dateOfBirth: Date = Calendar.current.date(byAdding: .year, value: -25, to: Date()) ?? Date()
-    @State private var heightCm: Double = 170
-    @State private var weightKg: Double = 70
-    @State private var targetWeightKg: Double = 65
+    @State private var heightInches: Double = ImperialUnits.cmToInches(170)
+    @State private var weightLbs: Double = ImperialUnits.kgToLbs(70)
+    @State private var targetWeightLbs: Double = ImperialUnits.kgToLbs(65)
     @State private var activityLevel: ActivityLevel = .moderatelyActive
     @State private var isCompleting = false
     @State private var healthKitGranted = false
@@ -36,9 +36,9 @@ struct OnboardingView: View {
                     OnboardingWelcomePage(step: $step).tag(0)
                     OnboardingGoalsPage(goals: $goals, step: $step).tag(1)
                     OnboardingBodyMetricsPage(sex: $biologicalSex, dob: $dateOfBirth,
-                                              heightCm: $heightCm, weightKg: $weightKg, step: $step).tag(2)
-                    OnboardingTargetPage(targetWeightKg: $targetWeightKg,
-                                         currentWeight: weightKg, step: $step).tag(3)
+                                              heightInches: $heightInches, weightLbs: $weightLbs, step: $step).tag(2)
+                    OnboardingTargetPage(targetWeightLbs: $targetWeightLbs,
+                                         currentWeightLbs: weightLbs, step: $step).tag(3)
                     OnboardingActivityPage(activityLevel: $activityLevel, step: $step).tag(4)
                     OnboardingPermissionsPage(healthKitGranted: $healthKitGranted, step: $step,
                                              onComplete: finishOnboarding).tag(5)
@@ -55,9 +55,9 @@ struct OnboardingView: View {
 
         updated.biologicalSex = biologicalSex
         updated.dateOfBirth = dateOfBirth
-        updated.heightCm = heightCm
-        updated.weightKg = weightKg
-        updated.targetWeightKg = targetWeightKg
+        updated.heightCm = ImperialUnits.inchesToCm(heightInches)
+        updated.weightKg = ImperialUnits.lbsToKg(weightLbs)
+        updated.targetWeightKg = ImperialUnits.lbsToKg(targetWeightLbs)
         updated.activityLevel = activityLevel
         updated.goals = Array(goals)
 
@@ -234,8 +234,8 @@ struct GoalSelectionCard: View {
 struct OnboardingBodyMetricsPage: View {
     @Binding var sex: BiologicalSex
     @Binding var dob: Date
-    @Binding var heightCm: Double
-    @Binding var weightKg: Double
+    @Binding var heightInches: Double
+    @Binding var weightLbs: Double
     @Binding var step: Int
 
     var body: some View {
@@ -276,11 +276,17 @@ struct OnboardingBodyMetricsPage: View {
                     }
 
                     // Height slider
-                    OnboardingSliderRow(title: "Height", value: $heightCm,
-                                        range: 130...220, unit: "cm", format: "%.0f")
+                    OnboardingSliderRow(
+                        title: "Height",
+                        value: $heightInches,
+                        range: 52...84,
+                        unit: "in",
+                        format: "%.0f",
+                        valueText: ImperialUnits.feetAndInchesString(fromInches: heightInches)
+                    )
                     // Weight slider
-                    OnboardingSliderRow(title: "Current Weight", value: $weightKg,
-                                        range: 30...250, unit: "kg", format: "%.1f")
+                    OnboardingSliderRow(title: "Current Weight", value: $weightLbs,
+                                        range: 80...550, unit: "lb", format: "%.1f")
                 }
 
                 OnboardingContinueButton(title: "Continue") {
@@ -294,8 +300,8 @@ struct OnboardingBodyMetricsPage: View {
 
 // MARK: - Target Page
 struct OnboardingTargetPage: View {
-    @Binding var targetWeightKg: Double
-    var currentWeight: Double
+    @Binding var targetWeightLbs: Double
+    var currentWeightLbs: Double
     @Binding var step: Int
 
     var body: some View {
@@ -309,10 +315,10 @@ struct OnboardingTargetPage: View {
                         Text("Current")
                             .font(AppFont.caption())
                             .foregroundColor(AppTheme.textSecondary)
-                        Text(currentWeight.formatted1)
+                        Text(currentWeightLbs.formatted1)
                             .font(AppFont.metric())
                             .foregroundColor(AppTheme.textPrimary)
-                        Text("kg")
+                        Text("lb")
                             .font(AppFont.caption())
                             .foregroundColor(AppTheme.textSecondary)
                     }
@@ -322,10 +328,10 @@ struct OnboardingTargetPage: View {
                         Text("Target")
                             .font(AppFont.caption())
                             .foregroundColor(AppTheme.textSecondary)
-                        Text(targetWeightKg.formatted1)
+                        Text(targetWeightLbs.formatted1)
                             .font(AppFont.metric())
                             .foregroundStyle(AppTheme.gradientPrimary)
-                        Text("kg")
+                        Text("lb")
                             .font(AppFont.caption())
                             .foregroundColor(AppTheme.textSecondary)
                     }
@@ -335,8 +341,8 @@ struct OnboardingTargetPage: View {
                 .cardStyle()
                 .padding(.horizontal, 24)
 
-                OnboardingSliderRow(title: "Target Weight", value: $targetWeightKg,
-                                    range: 30...250, unit: "kg", format: "%.1f")
+                OnboardingSliderRow(title: "Target Weight", value: $targetWeightLbs,
+                                    range: 80...550, unit: "lb", format: "%.1f")
             }
             Spacer()
             OnboardingContinueButton(title: "Continue") {
@@ -550,6 +556,7 @@ struct OnboardingSliderRow: View {
     var range: ClosedRange<Double>
     var unit: String
     var format: String
+    var valueText: String? = nil
 
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
@@ -558,7 +565,7 @@ struct OnboardingSliderRow: View {
                     .font(AppFont.subheadline(.semibold))
                     .foregroundColor(AppTheme.textSecondary)
                 Spacer()
-                Text(String(format: "\(format) \(unit)", value))
+                Text(valueText ?? String(format: "\(format) \(unit)", value))
                     .font(AppFont.headline(.bold))
                     .foregroundColor(AppTheme.accent)
             }

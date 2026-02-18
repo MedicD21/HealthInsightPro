@@ -68,6 +68,7 @@ CREATE TABLE IF NOT EXISTS food_items (
 
 CREATE INDEX IF NOT EXISTS food_items_name_idx ON food_items USING gin(to_tsvector('english', name));
 CREATE INDEX IF NOT EXISTS food_items_barcode_idx ON food_items (barcode) WHERE barcode IS NOT NULL;
+CREATE UNIQUE INDEX IF NOT EXISTS food_items_barcode_unique_idx ON food_items (barcode) WHERE barcode IS NOT NULL;
 
 -- =====================================================
 -- MEAL ENTRIES

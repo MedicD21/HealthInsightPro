@@ -57,10 +57,10 @@ struct WaterHeroCard: View {
                         Image(systemName: "drop.fill")
                             .font(.system(size: 28))
                             .foregroundStyle(AppTheme.gradientBlue)
-                        Text("\(Int(vm.totalMl))")
+                        Text("\(Int(ImperialUnits.mlToFluidOunces(vm.totalMl)))")
                             .font(.system(size: 38, weight: .black, design: .rounded))
                             .foregroundColor(AppTheme.textPrimary)
-                        Text("of \(Int(vm.goal)) ml")
+                        Text("of \(Int(ImperialUnits.mlToFluidOunces(vm.goal))) fl oz")
                             .font(AppFont.caption())
                             .foregroundColor(AppTheme.textSecondary)
                     }
@@ -76,7 +76,7 @@ struct WaterHeroCard: View {
                             .foregroundColor(AppTheme.textSecondary)
                     }
                     VStack(spacing: 4) {
-                        Text("\(Int(vm.remainingMl)) ml")
+                        Text("\(Int(ImperialUnits.mlToFluidOunces(vm.remainingMl))) fl oz")
                             .font(AppFont.title3(.bold))
                             .foregroundColor(AppTheme.textPrimary)
                         Text("Remaining")
@@ -120,7 +120,7 @@ struct WaterQuickAddSection: View {
                                 .font(AppFont.caption(.semibold))
                                 .foregroundColor(AppTheme.textSecondary)
                                 .multilineTextAlignment(.center)
-                            Text("\(Int(container.ml))ml")
+                            Text("\(Int(ImperialUnits.mlToFluidOunces(container.ml))) fl oz")
                                 .font(AppFont.caption())
                                 .foregroundColor(AppTheme.accentBlue)
                         }
@@ -183,7 +183,7 @@ struct WaterEntryRow: View {
                     .font(AppFont.caption()).foregroundColor(AppTheme.textSecondary)
             }
             Spacer()
-            Text("\(Int(entry.amountMl)) ml")
+            Text("\(Int(ImperialUnits.mlToFluidOunces(entry.amountMl))) fl oz")
                 .font(AppFont.subheadline(.bold)).foregroundColor(AppTheme.accentBlue)
             Button(action: onDelete) {
                 Image(systemName: "trash").font(.caption).foregroundColor(AppTheme.textTertiary)

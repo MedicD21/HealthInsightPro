@@ -8,38 +8,40 @@
 
 /* Begin PBXBuildFile section */
 		B001 /* HealthInsightProApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A001 /* HealthInsightProApp.swift */; };
-		B002 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = A002; };
-		B003 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A003; };
-		B004 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A004; };
-		B010 /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = A010; };
-		B011 /* Nutrition.swift in Sources */ = {isa = PBXBuildFile; fileRef = A011; };
-		B012 /* Sleep.swift in Sources */ = {isa = PBXBuildFile; fileRef = A012; };
-		B013 /* Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = A013; };
-		B014 /* HealthMetrics.swift in Sources */ = {isa = PBXBuildFile; fileRef = A014; };
-		B020 /* SupabaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A020; };
-		B021 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A021; };
-		B022 /* HealthKitService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A022; };
-		B030 /* DashboardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A030; };
-		B031 /* NutritionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A031; };
-		B032 /* SleepViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A032; };
-		B033 /* ActivityViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A033; };
-		B034 /* WaterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A034; };
-		B035 /* WeightViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A035; };
-		B036 /* InsightsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A036; };
-		B037 /* JournalViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A037; };
-		B040 /* RingProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A040; };
-		B041 /* MetricCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = A041; };
-		B050 /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A050; };
-		B051 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A051; };
-		B060 /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A060; };
-		B061 /* NutritionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A061; };
-		B062 /* SleepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A062; };
-		B063 /* ActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A063; };
-		B064 /* WaterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A064; };
-		B065 /* WeightView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A065; };
-		B066 /* InsightsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A066; };
-		B067 /* JournalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A067; };
-		B068 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A068; };
+		B002 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = A002 /* Theme.swift */; };
+		B003 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A003 /* Extensions.swift */; };
+		B004 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A004 /* Constants.swift */; };
+		B010 /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = A010 /* UserProfile.swift */; };
+		B011 /* Nutrition.swift in Sources */ = {isa = PBXBuildFile; fileRef = A011 /* Nutrition.swift */; };
+		B012 /* Sleep.swift in Sources */ = {isa = PBXBuildFile; fileRef = A012 /* Sleep.swift */; };
+		B013 /* Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = A013 /* Activity.swift */; };
+		B014 /* HealthMetrics.swift in Sources */ = {isa = PBXBuildFile; fileRef = A014 /* HealthMetrics.swift */; };
+		B020 /* SupabaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A020 /* SupabaseService.swift */; };
+		B021 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A021 /* AuthService.swift */; };
+		B022 /* HealthKitService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A022 /* HealthKitService.swift */; };
+		B023 /* OpenFoodFactsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A023 /* OpenFoodFactsService.swift */; };
+		B030 /* DashboardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A030 /* DashboardViewModel.swift */; };
+		B031 /* NutritionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A031 /* NutritionViewModel.swift */; };
+		B032 /* SleepViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A032 /* SleepViewModel.swift */; };
+		B033 /* ActivityViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A033 /* ActivityViewModel.swift */; };
+		B034 /* WaterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A034 /* WaterViewModel.swift */; };
+		B035 /* WeightViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A035 /* WeightViewModel.swift */; };
+		B036 /* InsightsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A036 /* InsightsViewModel.swift */; };
+		B037 /* JournalViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A037 /* JournalViewModel.swift */; };
+		B040 /* RingProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A040 /* RingProgressView.swift */; };
+		B041 /* MetricCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = A041 /* MetricCard.swift */; };
+		B050 /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A050 /* SignInView.swift */; };
+		B051 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A051 /* OnboardingView.swift */; };
+		B060 /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A060 /* DashboardView.swift */; };
+		B061 /* NutritionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A061 /* NutritionView.swift */; };
+		B062 /* SleepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A062 /* SleepView.swift */; };
+		B063 /* ActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A063 /* ActivityView.swift */; };
+		B064 /* WaterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A064 /* WaterView.swift */; };
+		B065 /* WeightView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A065 /* WeightView.swift */; };
+		B066 /* InsightsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A066 /* InsightsView.swift */; };
+		B067 /* JournalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A067 /* JournalView.swift */; };
+		B068 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A068 /* ProfileView.swift */; };
+		CB5DD9C02F46213900B7912A /* Supabase in Frameworks */ = {isa = PBXBuildFile; productRef = SUPAPKGDEP /* Supabase */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -55,6 +57,7 @@
 		A020 /* SupabaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupabaseService.swift; sourceTree = "<group>"; };
 		A021 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		A022 /* HealthKitService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKitService.swift; sourceTree = "<group>"; };
+		A023 /* OpenFoodFactsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenFoodFactsService.swift; sourceTree = "<group>"; };
 		A030 /* DashboardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewModel.swift; sourceTree = "<group>"; };
 		A031 /* NutritionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NutritionViewModel.swift; sourceTree = "<group>"; };
 		A032 /* SleepViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SleepViewModel.swift; sourceTree = "<group>"; };
@@ -77,113 +80,242 @@
 		A067 /* JournalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalView.swift; sourceTree = "<group>"; };
 		A068 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		APLIST /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		APRODUCT /* HealthInsightPro.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "HealthInsightPro.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		APRODUCT /* HealthInsightPro.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HealthInsightPro.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		FWKPHASE = {
+		FWKPHASE /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
-			files = ();
+			files = (
+				CB5DD9C02F46213900B7912A /* Supabase in Frameworks */,
+			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		MAINGROUP = {
+		ACTGROUP /* Activity */ = {
 			isa = PBXGroup;
 			children = (
-				APPGROUP,
-				PRODUCTSGROUP,
+				A063 /* ActivityView.swift */,
 			);
+			path = Activity;
 			sourceTree = "<group>";
 		};
-		PRODUCTSGROUP = {
-			isa = PBXGroup;
-			children = (APRODUCT);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		APPGROUP = {
+		APPGROUP /* HealthInsightPro */ = {
 			isa = PBXGroup;
 			children = (
-				A001,
-				APLIST,
-				UTILGROUP,
-				MODELGROUP,
-				SVCGROUP,
-				VMGROUP,
-				VIEWGROUP,
+				A001 /* HealthInsightProApp.swift */,
+				APLIST /* Info.plist */,
+				UTILGROUP /* Utilities */,
+				MODELGROUP /* Models */,
+				SVCGROUP /* Services */,
+				VMGROUP /* ViewModels */,
+				VIEWGROUP /* Views */,
 			);
 			path = HealthInsightPro;
 			sourceTree = "<group>";
 		};
-		UTILGROUP = {
+		AUTHGROUP /* Auth */ = {
 			isa = PBXGroup;
-			children = (A002, A003, A004);
-			path = Utilities;
+			children = (
+				A050 /* SignInView.swift */,
+			);
+			path = Auth;
 			sourceTree = "<group>";
 		};
-		MODELGROUP = {
+		COMPGROUP /* Components */ = {
 			isa = PBXGroup;
-			children = (A010, A011, A012, A013, A014);
+			children = (
+				A040 /* RingProgressView.swift */,
+				A041 /* MetricCard.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		DASHGROUP /* Dashboard */ = {
+			isa = PBXGroup;
+			children = (
+				A060 /* DashboardView.swift */,
+			);
+			path = Dashboard;
+			sourceTree = "<group>";
+		};
+		INSGROUP /* Insights */ = {
+			isa = PBXGroup;
+			children = (
+				A066 /* InsightsView.swift */,
+			);
+			path = Insights;
+			sourceTree = "<group>";
+		};
+		JRNGROUP /* Journal */ = {
+			isa = PBXGroup;
+			children = (
+				A067 /* JournalView.swift */,
+			);
+			path = Journal;
+			sourceTree = "<group>";
+		};
+		MAINGROUP = {
+			isa = PBXGroup;
+			children = (
+				APPGROUP /* HealthInsightPro */,
+				PRODUCTSGROUP /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		MODELGROUP /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				A010 /* UserProfile.swift */,
+				A011 /* Nutrition.swift */,
+				A012 /* Sleep.swift */,
+				A013 /* Activity.swift */,
+				A014 /* HealthMetrics.swift */,
+			);
 			path = Models;
 			sourceTree = "<group>";
 		};
-		SVCGROUP = {
+		NUTRIGROUP /* Nutrition */ = {
 			isa = PBXGroup;
-			children = (A020, A021, A022);
+			children = (
+				A061 /* NutritionView.swift */,
+			);
+			path = Nutrition;
+			sourceTree = "<group>";
+		};
+		ONBGROUP /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				A051 /* OnboardingView.swift */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
+		PRODUCTSGROUP /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				APRODUCT /* HealthInsightPro.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		PROFGROUP /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				A068 /* ProfileView.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		SLEEPGROUP /* Sleep */ = {
+			isa = PBXGroup;
+			children = (
+				A062 /* SleepView.swift */,
+			);
+			path = Sleep;
+			sourceTree = "<group>";
+		};
+		SVCGROUP /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				A020 /* SupabaseService.swift */,
+				A021 /* AuthService.swift */,
+				A022 /* HealthKitService.swift */,
+				A023 /* OpenFoodFactsService.swift */,
+			);
 			path = Services;
 			sourceTree = "<group>";
 		};
-		VMGROUP = {
-			isa = PBXGroup;
-			children = (A030, A031, A032, A033, A034, A035, A036, A037);
-			path = ViewModels;
-			sourceTree = "<group>";
-		};
-		VIEWGROUP = {
+		UTILGROUP /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
-				COMPGROUP, AUTHGROUP, ONBGROUP,
-				DASHGROUP, NUTRIGROUP, SLEEPGROUP,
-				ACTGROUP, WATERGROUP, WTGROUP,
-				INSGROUP, JRNGROUP, PROFGROUP,
+				A002 /* Theme.swift */,
+				A003 /* Extensions.swift */,
+				A004 /* Constants.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		VIEWGROUP /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				COMPGROUP /* Components */,
+				AUTHGROUP /* Auth */,
+				ONBGROUP /* Onboarding */,
+				DASHGROUP /* Dashboard */,
+				NUTRIGROUP /* Nutrition */,
+				SLEEPGROUP /* Sleep */,
+				ACTGROUP /* Activity */,
+				WATERGROUP /* Water */,
+				WTGROUP /* Weight */,
+				INSGROUP /* Insights */,
+				JRNGROUP /* Journal */,
+				PROFGROUP /* Profile */,
 			);
 			path = Views;
 			sourceTree = "<group>";
 		};
-		COMPGROUP  = {isa = PBXGroup; children = (A040, A041); path = Components; sourceTree = "<group>"; };
-		AUTHGROUP  = {isa = PBXGroup; children = (A050); path = Auth; sourceTree = "<group>"; };
-		ONBGROUP   = {isa = PBXGroup; children = (A051); path = Onboarding; sourceTree = "<group>"; };
-		DASHGROUP  = {isa = PBXGroup; children = (A060); path = Dashboard; sourceTree = "<group>"; };
-		NUTRIGROUP = {isa = PBXGroup; children = (A061); path = Nutrition; sourceTree = "<group>"; };
-		SLEEPGROUP = {isa = PBXGroup; children = (A062); path = Sleep; sourceTree = "<group>"; };
-		ACTGROUP   = {isa = PBXGroup; children = (A063); path = Activity; sourceTree = "<group>"; };
-		WATERGROUP = {isa = PBXGroup; children = (A064); path = Water; sourceTree = "<group>"; };
-		WTGROUP    = {isa = PBXGroup; children = (A065); path = Weight; sourceTree = "<group>"; };
-		INSGROUP   = {isa = PBXGroup; children = (A066); path = Insights; sourceTree = "<group>"; };
-		JRNGROUP   = {isa = PBXGroup; children = (A067); path = Journal; sourceTree = "<group>"; };
-		PROFGROUP  = {isa = PBXGroup; children = (A068); path = Profile; sourceTree = "<group>"; };
+		VMGROUP /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				A030 /* DashboardViewModel.swift */,
+				A031 /* NutritionViewModel.swift */,
+				A032 /* SleepViewModel.swift */,
+				A033 /* ActivityViewModel.swift */,
+				A034 /* WaterViewModel.swift */,
+				A035 /* WeightViewModel.swift */,
+				A036 /* InsightsViewModel.swift */,
+				A037 /* JournalViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		WATERGROUP /* Water */ = {
+			isa = PBXGroup;
+			children = (
+				A064 /* WaterView.swift */,
+			);
+			path = Water;
+			sourceTree = "<group>";
+		};
+		WTGROUP /* Weight */ = {
+			isa = PBXGroup;
+			children = (
+				A065 /* WeightView.swift */,
+			);
+			path = Weight;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		TARGET1 = {
+		TARGET1 /* HealthInsightPro */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = BLDCFGLIST;
-			buildPhases = (SRCPHASE, FWKPHASE, RSRCPHASE);
-			buildRules = ();
-			dependencies = ();
+			buildConfigurationList = BLDCFGLIST /* Build configuration list for PBXNativeTarget "HealthInsightPro" */;
+			buildPhases = (
+				SRCPHASE /* Sources */,
+				FWKPHASE /* Frameworks */,
+				RSRCPHASE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
 			name = HealthInsightPro;
-			packageProductDependencies = (SUPAPKGDEP);
+			packageProductDependencies = (
+				SUPAPKGDEP /* Supabase */,
+			);
 			productName = HealthInsightPro;
-			productReference = APRODUCT;
+			productReference = APRODUCT /* HealthInsightPro.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		PROJECT = {
+		PROJECT /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
@@ -195,48 +327,83 @@
 					};
 				};
 			};
-			buildConfigurationList = PROJBLDCFG;
+			buildConfigurationList = PROJBLDCFG /* Build configuration list for PBXProject "HealthInsightPro" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
-			knownRegions = (en, Base);
+			knownRegions = (
+				en,
+				Base,
+			);
 			mainGroup = MAINGROUP;
-			packageReferences = (SUPAPKGREF);
-			productRefGroup = PRODUCTSGROUP;
+			packageReferences = (
+				SUPAPKGREF /* XCRemoteSwiftPackageReference "supabase-swift" */,
+			);
+			productRefGroup = PRODUCTSGROUP /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
-			targets = (TARGET1);
+			targets = (
+				TARGET1 /* HealthInsightPro */,
+			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		RSRCPHASE = {
+		RSRCPHASE /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
-			files = ();
+			files = (
+			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		SRCPHASE = {
+		SRCPHASE /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B001, B002, B003, B004,
-				B010, B011, B012, B013, B014,
-				B020, B021, B022,
-				B030, B031, B032, B033, B034, B035, B036, B037,
-				B040, B041,
-				B050, B051,
-				B060, B061, B062, B063, B064, B065, B066, B067, B068,
+				B001 /* HealthInsightProApp.swift in Sources */,
+				B002 /* Theme.swift in Sources */,
+				B003 /* Extensions.swift in Sources */,
+				B004 /* Constants.swift in Sources */,
+				B010 /* UserProfile.swift in Sources */,
+				B011 /* Nutrition.swift in Sources */,
+				B012 /* Sleep.swift in Sources */,
+				B013 /* Activity.swift in Sources */,
+				B014 /* HealthMetrics.swift in Sources */,
+				B020 /* SupabaseService.swift in Sources */,
+				B021 /* AuthService.swift in Sources */,
+				B022 /* HealthKitService.swift in Sources */,
+				B023 /* OpenFoodFactsService.swift in Sources */,
+				B030 /* DashboardViewModel.swift in Sources */,
+				B031 /* NutritionViewModel.swift in Sources */,
+				B032 /* SleepViewModel.swift in Sources */,
+				B033 /* ActivityViewModel.swift in Sources */,
+				B034 /* WaterViewModel.swift in Sources */,
+				B035 /* WeightViewModel.swift in Sources */,
+				B036 /* InsightsViewModel.swift in Sources */,
+				B037 /* JournalViewModel.swift in Sources */,
+				B040 /* RingProgressView.swift in Sources */,
+				B041 /* MetricCard.swift in Sources */,
+				B050 /* SignInView.swift in Sources */,
+				B051 /* OnboardingView.swift in Sources */,
+				B060 /* DashboardView.swift in Sources */,
+				B061 /* NutritionView.swift in Sources */,
+				B062 /* SleepView.swift in Sources */,
+				B063 /* ActivityView.swift in Sources */,
+				B064 /* WaterView.swift in Sources */,
+				B065 /* WeightView.swift in Sources */,
+				B066 /* InsightsView.swift in Sources */,
+				B067 /* JournalView.swift in Sources */,
+				B068 /* ProfileView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		DEBUGCFG = {
+		DEBUGCFG /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -252,7 +419,10 @@
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = ("DEBUG=1","$(inherited)");
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -261,7 +431,7 @@
 			};
 			name = Debug;
 		};
-		RELEASECFG = {
+		RELEASECFG /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -281,72 +451,91 @@
 			};
 			name = Release;
 		};
-		TARGETDEBUG = {
+		TARGETDEBUG /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = HealthInsightPro/HealthInsightPro.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "";
+				DEVELOPMENT_TEAM = 286LKF859M;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = HealthInsightPro/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
-				LD_RUNPATH_SEARCH_PATHS = ("$(inherited)","@executable_path/Frameworks");
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.healthinsightpro.app";
+				PRODUCT_BUNDLE_IDENTIFIER = com.healthinsightpro.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				/* Entitlements */
-				CODE_SIGN_ENTITLEMENTS = HealthInsightPro/HealthInsightPro.entitlements;
 			};
 			name = Debug;
 		};
-		TARGETRELEASE = {
+		TARGETRELEASE /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = HealthInsightPro/HealthInsightPro.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "";
+				DEVELOPMENT_TEAM = 286LKF859M;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = HealthInsightPro/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
-				LD_RUNPATH_SEARCH_PATHS = ("$(inherited)","@executable_path/Frameworks");
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.healthinsightpro.app";
+				PRODUCT_BUNDLE_IDENTIFIER = com.healthinsightpro.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				CODE_SIGN_ENTITLEMENTS = HealthInsightPro/HealthInsightPro.entitlements;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		PROJBLDCFG = {
+		BLDCFGLIST /* Build configuration list for PBXNativeTarget "HealthInsightPro" */ = {
 			isa = XCConfigurationList;
-			buildConfigurations = (DEBUGCFG, RELEASECFG);
+			buildConfigurations = (
+				TARGETDEBUG /* Debug */,
+				TARGETRELEASE /* Release */,
+			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		BLDCFGLIST = {
+		PROJBLDCFG /* Build configuration list for PBXProject "HealthInsightPro" */ = {
 			isa = XCConfigurationList;
-			buildConfigurations = (TARGETDEBUG, TARGETRELEASE);
+			buildConfigurations = (
+				DEBUGCFG /* Debug */,
+				RELEASECFG /* Release */,
+			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		SUPAPKGREF = {
+		SUPAPKGREF /* XCRemoteSwiftPackageReference "supabase-swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/supabase/supabase-swift.git";
 			requirement = {
@@ -357,13 +546,12 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		SUPAPKGDEP = {
+		SUPAPKGDEP /* Supabase */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = SUPAPKGREF;
+			package = SUPAPKGREF /* XCRemoteSwiftPackageReference "supabase-swift" */;
 			productName = Supabase;
 		};
 /* End XCSwiftPackageProductDependency section */
-
 	};
-	rootObject = PROJECT;
+	rootObject = PROJECT /* Project object */;
 }

@@ -72,9 +72,11 @@ final class OpenFoodFactsService {
         guard let name = p.product_name, !name.isEmpty else { return nil }
         let n = p.nutriments ?? OFFNutriments()
 
-        // OFF stores nutrients per 100g. Determine serving size.
-        let servingGrams = parseServingGrams(p.serving_size) ?? 100.0
-        let scale = servingGrams / 100.0
+        // OFF stores nutrients per 100g. Determine serving size from serving_size, then quantity.
+        let servingText = p.serving_size ?? p.quantity
+        let parsedServing = parseServingAmount(servingText)
+        let servingAmount = parsedServing?.amount ?? 100.0
+        let scale = servingAmount / 100.0
 
         // Build macros (nutriments are per 100g in OFF)
         let macros = Macros(
@@ -96,29 +98,57 @@ final class OpenFoodFactsService {
             name: name,
             brand: p.brands?.components(separatedBy: ",").first?.trimmingCharacters(in: .whitespaces),
             barcode: p.code,
-            servingSize: servingGrams,
-            servingUnit: servingUnit(from: p.serving_size),
-            servingDescription: p.serving_size ?? "\(Int(servingGrams))g",
+            servingSize: servingAmount,
+            servingUnit: parsedServing?.unit ?? servingUnit(from: servingText),
+            servingDescription: servingText ?? "\(Int(servingAmount))g",
             macrosPerServing: macros,
             isCustom: false,
             userId: nil
         )
     }
 
-    /// Extracts numeric grams value from OFF serving size string like "30 g", "1 cup (240ml)", "28g"
-    private func parseServingGrams(_ servingSize: String?) -> Double? {
-        guard let s = servingSize else { return nil }
-        // Try to find a number followed by g/ml
-        let pattern = #"(\d+(?:\.\d+)?)\s*(?:g|ml|oz|cup|tbsp|tsp)"#
+    /// Extracts serving amount from OFF string like "30 g", "1 cup (240ml)", "2 oz"
+    /// Returns serving amount in `g` or `ml` and normalized unit label.
+    private func parseServingAmount(_ servingSize: String?) -> (amount: Double, unit: String)? {
+        guard let servingSize else { return nil }
+
+        let pattern = #"(\d+(?:[.,]\d+)?)\s*(kg|g|mg|ml|l|oz|fl\s*oz|lb|lbs|cup|tbsp|tsp)"#
         guard let regex = try? NSRegularExpression(pattern: pattern, options: .caseInsensitive),
-              let match = regex.firstMatch(in: s, range: NSRange(s.startIndex..., in: s)),
-              let range = Range(match.range(at: 1), in: s),
-              let value = Double(s[range])
+              let match = regex.firstMatch(in: servingSize, range: NSRange(servingSize.startIndex..., in: servingSize)),
+              let valueRange = Range(match.range(at: 1), in: servingSize),
+              let unitRange = Range(match.range(at: 2), in: servingSize)
         else {
-            // Try bare number
-            return Double(s.trimmingCharacters(in: .whitespaces).components(separatedBy: " ").first ?? "")
+            return nil
         }
-        return value > 0 ? value : nil
+
+        let rawValue = servingSize[valueRange].replacingOccurrences(of: ",", with: ".")
+        guard let value = Double(rawValue), value > 0 else { return nil }
+
+        let unitToken = servingSize[unitRange].lowercased().replacingOccurrences(of: " ", with: "")
+        switch unitToken {
+        case "kg":
+            return (value * 1000.0, "g")
+        case "g":
+            return (value, "g")
+        case "mg":
+            return (value / 1000.0, "g")
+        case "ml":
+            return (value, "ml")
+        case "l":
+            return (value * 1000.0, "ml")
+        case "oz", "floz":
+            return (value * 29.5735, "ml")
+        case "lb", "lbs":
+            return (value * 453.592, "g")
+        case "cup":
+            return (value * 240.0, "ml")
+        case "tbsp":
+            return (value * 15.0, "ml")
+        case "tsp":
+            return (value * 5.0, "ml")
+        default:
+            return nil
+        }
     }
 
     private func servingUnit(from servingSize: String?) -> String {

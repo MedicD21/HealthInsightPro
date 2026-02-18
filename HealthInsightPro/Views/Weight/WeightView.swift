@@ -63,9 +63,9 @@ struct WeightHeroCard: View {
                 Text("Current")
                     .font(AppFont.caption(.semibold)).foregroundColor(AppTheme.textSecondary)
                 HStack(alignment: .lastTextBaseline, spacing: 4) {
-                    Text(vm.latestWeight.map { String(format: "%.1f", $0) } ?? "--")
+                    Text(vm.latestWeight.map { String(format: "%.1f", ImperialUnits.kgToLbs($0)) } ?? "--")
                         .font(AppFont.bigNumber()).foregroundColor(AppTheme.textPrimary)
-                    Text("kg")
+                    Text("lb")
                         .font(AppFont.callout()).foregroundColor(AppTheme.textSecondary)
                 }
             }
@@ -82,10 +82,10 @@ struct WeightHeroCard: View {
                         Image(systemName: change < 0 ? "arrow.down" : "arrow.up")
                             .font(.system(size: 16, weight: .bold))
                             .foregroundColor(change < 0 ? AppTheme.accentGreen : AppTheme.accentPink)
-                        Text(String(format: "%.1f", abs(change)))
+                        Text(String(format: "%.1f", ImperialUnits.kgToLbs(abs(change))))
                             .font(AppFont.title1(.bold))
                             .foregroundColor(change < 0 ? AppTheme.accentGreen : AppTheme.accentPink)
-                        Text("kg").font(AppFont.callout()).foregroundColor(AppTheme.textSecondary)
+                        Text("lb").font(AppFont.callout()).foregroundColor(AppTheme.textSecondary)
                     }
                 } else {
                     Text("--").font(AppFont.title1(.bold)).foregroundColor(AppTheme.textTertiary)
@@ -100,9 +100,9 @@ struct WeightHeroCard: View {
                 Text("Target")
                     .font(AppFont.caption(.semibold)).foregroundColor(AppTheme.textSecondary)
                 HStack(alignment: .lastTextBaseline, spacing: 4) {
-                    Text(vm.targetWeight.map { String(format: "%.1f", $0) } ?? "--")
+                    Text(vm.targetWeight.map { String(format: "%.1f", ImperialUnits.kgToLbs($0)) } ?? "--")
                         .font(AppFont.title1(.bold)).foregroundColor(AppTheme.accent)
-                    Text("kg").font(AppFont.callout()).foregroundColor(AppTheme.textSecondary)
+                    Text("lb").font(AppFont.callout()).foregroundColor(AppTheme.textSecondary)
                 }
             }
             .frame(maxWidth: .infinity)
@@ -125,11 +125,11 @@ struct WeightGoalCard: View {
                               showLabel: true, label: "Progress to goal")
             HStack {
                 if let start = vm.startWeight {
-                    Text("Start: \(String(format: "%.1f kg", start))")
+                    Text("Start: \(String(format: "%.1f lb", ImperialUnits.kgToLbs(start)))")
                         .font(AppFont.caption()).foregroundColor(AppTheme.textSecondary)
                 }
                 Spacer()
-                Text("Target: \(String(format: "%.1f kg", target))")
+                Text("Target: \(String(format: "%.1f lb", ImperialUnits.kgToLbs(target)))")
                     .font(AppFont.caption()).foregroundColor(AppTheme.textSecondary)
             }
         }
@@ -224,7 +224,7 @@ struct WeightLogCard: View {
                                 }
                             }
                             Spacer()
-                            Text(String(format: "%.1f kg", entry.weightKg))
+                            Text(String(format: "%.1f lb", ImperialUnits.kgToLbs(entry.weightKg)))
                                 .font(AppFont.headline(.bold)).foregroundColor(AppTheme.textPrimary)
                         }
                         .padding(.horizontal, Constants.Layout.padding)
@@ -251,8 +251,8 @@ struct LogWeightSheet: View {
                     VStack(spacing: 16) {
                         // Weight input
                         VStack(alignment: .leading, spacing: 8) {
-                            Text("Weight (kg)").font(AppFont.subheadline(.semibold)).foregroundColor(AppTheme.textSecondary)
-                            TextField("e.g. 70.5", text: $vm.newWeightInput)
+                            Text("Weight (lb)").font(AppFont.subheadline(.semibold)).foregroundColor(AppTheme.textSecondary)
+                            TextField("e.g. 155.0", text: $vm.newWeightInput)
                                 .keyboardType(.decimalPad)
                                 .font(AppFont.title2(.bold))
                                 .foregroundColor(AppTheme.textPrimary)

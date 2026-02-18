@@ -50,10 +50,11 @@ final class WeightViewModel: ObservableObject {
     }
 
     func logWeight() async {
-        guard let uid = userId, let kg = Double(newWeightInput), kg > 20, kg < 500 else {
+        guard let uid = userId, let lbs = Double(newWeightInput), lbs > 45, lbs < 1100 else {
             errorMessage = "Please enter a valid weight"
             return
         }
+        let kg = ImperialUnits.lbsToKg(lbs)
         let bodyFat = Double(newBodyFat)
         let entry = WeightEntry(
             id: UUID(), userId: uid,

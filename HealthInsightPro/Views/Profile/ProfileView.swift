@@ -32,7 +32,7 @@ struct ProfileView: View {
                         }
 
                         SettingsSection(title: "Preferences") {
-                            SettingsRow(icon: "ruler.fill", color: AppTheme.accentGreen, title: "Units (kg / cm)")
+                            SettingsRow(icon: "ruler.fill", color: AppTheme.accentGreen, title: "Units (lb / ft / mi)")
                             SettingsRow(icon: "bell.fill", color: AppTheme.accentOrange, title: "Notifications")
                             SettingsRow(icon: "moon.fill", color: AppTheme.accentYellow, title: "Appearance")
                         }
@@ -133,9 +133,9 @@ struct ProfileStatsSummary: View {
             Divider().background(AppTheme.borderSubtle).frame(height: 44)
             StatPill(label: "Age", value: profile?.age.map { "\($0)" } ?? "--", subtitle: "years")
             Divider().background(AppTheme.borderSubtle).frame(height: 44)
-            StatPill(label: "Height", value: profile.map { "\(Int($0.heightCm))" } ?? "--", subtitle: "cm")
+            StatPill(label: "Height", value: profile.map { ImperialUnits.cmToFeetAndInchesString($0.heightCm) } ?? "--", subtitle: "ft/in")
             Divider().background(AppTheme.borderSubtle).frame(height: 44)
-            StatPill(label: "Weight", value: profile.map { String(format: "%.1f", $0.weightKg) } ?? "--", subtitle: "kg")
+            StatPill(label: "Weight", value: profile.map { String(format: "%.1f", ImperialUnits.kgToLbs($0.weightKg)) } ?? "--", subtitle: "lb")
         }
         .padding(.vertical, 16)
         .cardStyle()
@@ -168,7 +168,7 @@ struct GoalsSection: View {
                 GoalItem(icon: "figure.walk", color: AppTheme.accentBlue,
                          label: "Steps", value: "\(profile.dailyStepGoal)")
                 GoalItem(icon: "drop.fill", color: AppTheme.accentTeal,
-                         label: "Water", value: "\(Int(profile.dailyWaterGoal)) ml")
+                         label: "Water", value: "\(Int(ImperialUnits.mlToFluidOunces(profile.dailyWaterGoal))) fl oz")
                 GoalItem(icon: "moon.stars.fill", color: AppTheme.accentYellow,
                          label: "Sleep", value: "\(profile.nightlySleepGoal)h")
             }
@@ -253,11 +253,11 @@ struct EditProfileView: View {
     var authService: AuthService
     @Environment(\.dismiss) var dismiss
     @State private var fullName: String = ""
-    @State private var heightCm: Double = 170
-    @State private var weightKg: Double = 70
+    @State private var heightInches: Double = 67
+    @State private var weightLbs: Double = 154
     @State private var activityLevel: ActivityLevel = .moderatelyActive
     @State private var calorieGoal: Double = 2000
-    @State private var waterGoal: Double = 2500
+    @State private var waterGoalFlOz: Double = 85
     @State private var stepGoal: Double = 10000
     @State private var sleepGoal: Double = 8.0
 
@@ -272,13 +272,20 @@ struct EditProfileView: View {
 
                         // Height & weight
                         HStack(spacing: 12) {
-                            OnboardingSliderRow(title: "Height (cm)", value: $heightCm, range: 130...220, unit: "cm", format: "%.0f")
+                            OnboardingSliderRow(
+                                title: "Height",
+                                value: $heightInches,
+                                range: 52...84,
+                                unit: "in",
+                                format: "%.0f",
+                                valueText: ImperialUnits.feetAndInchesString(fromInches: heightInches)
+                            )
                         }
-                        OnboardingSliderRow(title: "Weight (kg)", value: $weightKg, range: 30...250, unit: "kg", format: "%.1f")
+                        OnboardingSliderRow(title: "Weight (lb)", value: $weightLbs, range: 80...550, unit: "lb", format: "%.1f")
 
                         // Goals
                         OnboardingSliderRow(title: "Calorie Goal", value: $calorieGoal, range: 1000...5000, unit: "kcal", format: "%.0f")
-                        OnboardingSliderRow(title: "Water Goal", value: $waterGoal, range: 500...5000, unit: "ml", format: "%.0f")
+                        OnboardingSliderRow(title: "Water Goal", value: $waterGoalFlOz, range: 16...200, unit: "fl oz", format: "%.0f")
                         OnboardingSliderRow(title: "Step Goal", value: $stepGoal, range: 1000...30000, unit: "steps", format: "%.0f")
                         OnboardingSliderRow(title: "Sleep Goal", value: $sleepGoal, range: 4...12, unit: "h", format: "%.1f")
 
@@ -311,11 +318,11 @@ struct EditProfileView: View {
     func loadCurrent() {
         guard let p = authService.currentUser else { return }
         fullName = p.fullName ?? ""
-        heightCm = p.heightCm
-        weightKg = p.weightKg
+        heightInches = ImperialUnits.cmToInches(p.heightCm)
+        weightLbs = ImperialUnits.kgToLbs(p.weightKg)
         activityLevel = p.activityLevel
         calorieGoal = p.dailyCalorieGoal
-        waterGoal = p.dailyWaterGoal
+        waterGoalFlOz = ImperialUnits.mlToFluidOunces(p.dailyWaterGoal)
         stepGoal = Double(p.dailyStepGoal)
         sleepGoal = p.nightlySleepGoal
     }
@@ -323,11 +330,11 @@ struct EditProfileView: View {
     func saveChanges() async {
         guard var profile = authService.currentUser else { return }
         profile.fullName = fullName
-        profile.heightCm = heightCm
-        profile.weightKg = weightKg
+        profile.heightCm = ImperialUnits.inchesToCm(heightInches)
+        profile.weightKg = ImperialUnits.lbsToKg(weightLbs)
         profile.activityLevel = activityLevel
         profile.dailyCalorieGoal = calorieGoal
-        profile.dailyWaterGoal = waterGoal
+        profile.dailyWaterGoal = ImperialUnits.fluidOuncesToMl(waterGoalFlOz)
         profile.dailyStepGoal = Int(stepGoal)
         profile.nightlySleepGoal = sleepGoal
         profile.updatedAt = Date()

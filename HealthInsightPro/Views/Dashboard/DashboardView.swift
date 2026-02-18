@@ -255,13 +255,13 @@ struct QuickStatsGrid: View {
                 )
                 MetricCard(
                     title: "Hydration",
-                    value: "\(Int(vm.waterMl))",
-                    unit: "ml",
+                    value: "\(Int(ImperialUnits.mlToFluidOunces(vm.waterMl)))",
+                    unit: "fl oz",
                     icon: "drop.fill",
                     iconColor: AppTheme.accentTeal,
                     progress: vm.waterProgress,
                     progressColor: AppTheme.accentTeal,
-                    subtitle: "\(Int(vm.waterGoal - vm.waterMl))ml remaining"
+                    subtitle: "\(Int(ImperialUnits.mlToFluidOunces(max(0, vm.waterGoal - vm.waterMl)))) fl oz remaining"
                 )
                 MetricCard(
                     title: "Active Cal",
@@ -273,8 +273,8 @@ struct QuickStatsGrid: View {
                 )
                 MetricCard(
                     title: "Weight",
-                    value: vm.latestWeight.map { String(format: "%.1f", $0) } ?? "--",
-                    unit: "kg",
+                    value: vm.latestWeight.map { String(format: "%.1f", ImperialUnits.kgToLbs($0)) } ?? "--",
+                    unit: "lb",
                     icon: "scalemass.fill",
                     iconColor: AppTheme.accentPurple
                 )

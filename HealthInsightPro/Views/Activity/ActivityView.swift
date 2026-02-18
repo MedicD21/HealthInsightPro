@@ -117,7 +117,7 @@ struct ActivityQuickStats: View {
                              label: "Steps", value: vm.steps.asSteps)
             ActivityStatCard(icon: "location.fill", color: AppTheme.accentGreen,
                              label: "Distance",
-                             value: vm.distanceKm > 0 ? String(format: "%.2f km", vm.distanceKm) : "-- km")
+                             value: vm.distanceKm > 0 ? String(format: "%.2f mi", ImperialUnits.kmToMiles(vm.distanceKm)) : "-- mi")
             ActivityStatCard(icon: "flame.fill", color: AppTheme.accentOrange,
                              label: "Active Cal", value: "\(Int(vm.activeCalories))")
             ActivityStatCard(icon: "timer", color: AppTheme.accent,
@@ -228,8 +228,8 @@ struct HeartRateCard: View {
                 Divider().background(AppTheme.borderSubtle).frame(height: 50)
                 HeartStatItem(icon: "lungs.fill", color: AppTheme.accentBlue,
                               label: "VO2 Max",
-                              value: vm.vo2max.map { String(format: "%.1f", $0) } ?? "--",
-                              unit: "ml/kg")
+                              value: vm.vo2max.map { String(format: "%.1f", $0 / 2.2046226218) } ?? "--",
+                              unit: "ml/lb")
             }
         }
         .padding(Constants.Layout.padding)

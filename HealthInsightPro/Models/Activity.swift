@@ -112,7 +112,11 @@ struct ActivityEntry: Codable, Identifiable {
 
     var distanceString: String? {
         guard let d = distanceKm else { return nil }
-        return d >= 1 ? String(format: "%.2f km", d) : String(format: "%.0f m", d * 1000)
+        let miles = ImperialUnits.kmToMiles(d)
+        if miles >= 0.1 {
+            return String(format: "%.2f mi", miles)
+        }
+        return String(format: "%.0f ft", ImperialUnits.kmToFeet(d))
     }
 
     enum CodingKeys: String, CodingKey {
